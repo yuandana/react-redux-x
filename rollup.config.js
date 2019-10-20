@@ -3,7 +3,6 @@ import filesize from 'rollup-plugin-filesize';
 import resolve from 'rollup-plugin-node-resolve';
 import commonjs from 'rollup-plugin-commonjs';
 import replace from 'rollup-plugin-replace';
-import { eslint } from 'rollup-plugin-eslint';
 
 export default {
     input: `./src/index.js`,
@@ -39,12 +38,6 @@ export default {
                     }
                 ]
             ]
-        }),
-        eslint({
-            include: ['src/**'],
-            exclude: ['node_modules/**'],
-            throwOnError: true,
-            throwOnWarning: true
         }),
         replace({
             exclude: 'node_modules/**',
