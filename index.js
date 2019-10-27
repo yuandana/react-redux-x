@@ -1,27 +1,44 @@
-import { createStore, applyMiddleware, compose, bindActionCreators } from 'redux';
+import {
+    createStore,
+    applyMiddleware,
+    compose,
+    bindActionCreators
+} from 'redux';
+import {
+    Provider,
+    connect,
+    connectAdvanced,
+    batch,
+    userSelector,
+    useDispatch,
+    useStore,
+    useActions
+} from 'react-redux';
 import ReduxModule from './redux-module.js';
 import { isObject } from './utils.js';
 import createActionMiddleware from './action.middleware.js';
 
 /**
  * 创建一个 redux-module-store
- * 
+ *
  * @param  {[type]} module         [description]
  * @param  {[type]} preloadedState [description]
  * @param  {[type]} enhancer       [description]
  * @return {[type]}                [description]
  */
-const createReduxModuleStore = ( module, preloadedState, enhancer ) => {
-
+const createStore = (module, preloadedState, enhancer) => {
     // 处理传入参数
-    if( typeof preloadedState === 'function' && typeof enhancer === 'undefined' ) {
+    if (
+        typeof preloadedState === 'function' &&
+        typeof enhancer === 'undefined'
+    ) {
         enhancer = preloadedState;
         preloadedState = undefined;
     }
 
     // 判断 module 是否为 Object
-    if( !isObject(module) ){
-        throw new Error('Expected the module to be a Object.')
+    if (!isObject(module)) {
+        throw new Error('Expected the module to be a Object.');
     }
 
     // 初始化
@@ -31,34 +48,41 @@ const createReduxModuleStore = ( module, preloadedState, enhancer ) => {
     const rootReducer = moduleInstance.createReducer();
 
     const actionMiddleware = createActionMiddleware(moduleInstance);
-    const reduxModuleEnhancer = applyMiddleware(actionMiddleware)
+    const reduxModuleEnhancer = applyMiddleware(actionMiddleware);
 
     // 合并 enhancer 和 redux-module 集成 actionMiddleware
-    if( enhancer !== undefined ){
+    if (enhancer !== undefined) {
         // compose 原有的 applyMiddleware 或者 enhancer
         // 并保证 actionMiddleware 在第一位
         enhancer = compose(
             reduxModuleEnhancer,
             enhancer
-        )
-    }else{
+        );
+    } else {
         enhancer = reduxModuleEnhancer;
     }
 
     // 创建原生 redux store
     // createStore(reducer, [preloadedState], enhancer)
-    const store = createStore(
-        rootReducer,
-        preloadedState,
-        enhancer
-    );
+    const store = createStore(rootReducer, preloadedState, enhancer);
 
     return store;
-}
+};
 
 export {
-    createReduxModuleStore,
+    // from react-redux-x
+    createStore,
+    // from redux
     applyMiddleware,
     compose,
-    bindActionCreators
-}
+    bindActionCreators,
+    // from react-redux
+    Provider,
+    connect,
+    connectAdvanced,
+    batch,
+    userSelector,
+    useDispatch,
+    useStore,
+    useActions
+};

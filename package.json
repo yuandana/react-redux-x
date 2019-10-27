@@ -21,6 +21,9 @@
     "files": [
         "dist"
     ],
+    "publishConfig": {
+        "access": "public"
+    },
     "devDependencies": {
         "@babel/core": "^7.6.4",
         "@babel/preset-env": "^7.6.3",
@@ -33,6 +36,7 @@
         "rollup-plugin-replace": "^2.2.0"
     },
     "dependencies": {
+        "react-redux": "^7.1.1",
         "redux": "^4.0.4"
     }
 }
