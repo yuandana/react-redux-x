@@ -4,6 +4,17 @@ import {
     compose,
     bindActionCreators
 } from 'redux';
+import {
+    Provider,
+    connect,
+    connectAdvanced,
+    batch,
+    userSelector,
+    useDispatch,
+    useStore,
+    useActions
+} from 'react-redux';
+
 import ReduxModule from './redux-x.js';
 import { isObject } from './utils.js';
 import createActionMiddleware from './action.middleware.js';
@@ -58,4 +69,20 @@ const createStore = (module, preloadedState, enhancer) => {
     return store;
 };
 
-export { createStore, applyMiddleware, compose, bindActionCreators };
+export {
+    // from react-redux-x
+    createStore,
+    // from redux
+    applyMiddleware,
+    compose,
+    bindActionCreators,
+    // from react-redux
+    Provider,
+    connect,
+    connectAdvanced,
+    batch,
+    userSelector,
+    useDispatch,
+    useStore,
+    useActions
+};
