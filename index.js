@@ -1,20 +1,10 @@
 import {
-    createStore,
+    createStore as reduxCreateStore,
     applyMiddleware,
     compose,
     bindActionCreators
 } from 'redux';
-import {
-    Provider,
-    connect,
-    connectAdvanced,
-    batch,
-    userSelector,
-    useDispatch,
-    useStore,
-    useActions
-} from 'react-redux';
-import ReduxModule from './redux-module.js';
+import ReduxModule from './redux-x.js';
 import { isObject } from './utils.js';
 import createActionMiddleware from './action.middleware.js';
 
@@ -64,25 +54,8 @@ const createStore = (module, preloadedState, enhancer) => {
 
     // 创建原生 redux store
     // createStore(reducer, [preloadedState], enhancer)
-    const store = createStore(rootReducer, preloadedState, enhancer);
-
+    const store = reduxCreateStore(rootReducer, preloadedState, enhancer);
     return store;
 };
 
-export {
-    // from react-redux-x
-    createStore,
-    // from redux
-    applyMiddleware,
-    compose,
-    bindActionCreators,
-    // from react-redux
-    Provider,
-    connect,
-    connectAdvanced,
-    batch,
-    userSelector,
-    useDispatch,
-    useStore,
-    useActions
-};
+export { createStore, applyMiddleware, compose, bindActionCreators };
