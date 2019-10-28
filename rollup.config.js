@@ -6,14 +6,26 @@ import replace from 'rollup-plugin-replace';
 
 export default {
     input: `./src/index.js`,
-    external: ['redux'],
+    external: [
+        'redux',
+        'react-redux',
+        'react',
+        'react-dom',
+        'react-is',
+        'prop-types'
+    ],
     output: [
         {
             file: `./dist/es/index.js`,
             format: 'es',
             name: '@yuandana/redux-x',
             globals: {
-                redux: 'redux'
+                redux: 'redux',
+                'react-redux': 'reactRedux',
+                react: 'React',
+                'prop-types': 'PropTypes',
+                'react-is': 'reactIs',
+                'react-dom': 'reactDom'
             }
         },
         {
@@ -21,7 +33,12 @@ export default {
             format: 'umd',
             name: '@yuandana/redux-x',
             globals: {
-                redux: 'redux'
+                redux: 'redux',
+                'react-redux': 'reactRedux',
+                react: 'React',
+                'prop-types': 'PropTypes',
+                'react-is': 'reactIs',
+                'react-dom': 'reactDom'
             }
         }
     ],
@@ -35,7 +52,8 @@ export default {
                     '@babel/preset-env',
                     {
                         modules: false
-                    }
+                    },
+                    '@babel/preset-react'
                 ]
             ]
         }),

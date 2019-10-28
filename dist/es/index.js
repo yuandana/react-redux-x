@@ -1,5 +1,6 @@
 import { applyMiddleware, compose, createStore as createStore$1 } from 'redux';
 export { applyMiddleware, bindActionCreators, compose } from 'redux';
+export { Provider, batch, connect, connectAdvanced } from 'react-redux';
 
 function _classCallCheck(instance, Constructor) {
   if (!(instance instanceof Constructor)) {

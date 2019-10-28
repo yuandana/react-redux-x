@@ -1,8 +1,8 @@
 (function (global, factory) {
-  typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('redux')) :
-  typeof define === 'function' && define.amd ? define(['exports', 'redux'], factory) :
-  (global = global || self, factory(global['@yuandana/redux-x'] = {}, global.redux));
-}(this, (function (exports, redux) { 'use strict';
+  typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('redux'), require('react-redux')) :
+  typeof define === 'function' && define.amd ? define(['exports', 'redux', 'react-redux'], factory) :
+  (global = global || self, factory(global['@yuandana/redux-x'] = {}, global.redux, global.reactRedux));
+}(this, (function (exports, redux, reactRedux) { 'use strict';
 
   function _classCallCheck(instance, Constructor) {
     if (!(instance instanceof Constructor)) {
@@ -715,6 +715,30 @@
     enumerable: true,
     get: function () {
       return redux.compose;
+    }
+  });
+  Object.defineProperty(exports, 'Provider', {
+    enumerable: true,
+    get: function () {
+      return reactRedux.Provider;
+    }
+  });
+  Object.defineProperty(exports, 'batch', {
+    enumerable: true,
+    get: function () {
+      return reactRedux.batch;
+    }
+  });
+  Object.defineProperty(exports, 'connect', {
+    enumerable: true,
+    get: function () {
+      return reactRedux.connect;
+    }
+  });
+  Object.defineProperty(exports, 'connectAdvanced', {
+    enumerable: true,
+    get: function () {
+      return reactRedux.connectAdvanced;
     }
   });
   exports.createStore = createStore;

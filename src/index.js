@@ -5,6 +5,8 @@ import {
     bindActionCreators
 } from 'redux';
 
+import { Provider, connect, connectAdvanced, batch } from 'react-redux';
+
 import ReduxModule from './redux-x.js';
 import { isObject } from './utils.js';
 import createActionMiddleware from './action.middleware.js';
@@ -65,5 +67,10 @@ export {
     // from redux
     applyMiddleware,
     compose,
-    bindActionCreators
+    bindActionCreators,
+    // from react-redux
+    Provider,
+    connect,
+    connectAdvanced,
+    batch
 };
