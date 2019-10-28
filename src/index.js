@@ -4,16 +4,6 @@ import {
     compose,
     bindActionCreators
 } from 'redux';
-import {
-    Provider,
-    connect,
-    connectAdvanced,
-    batch,
-    userSelector,
-    useDispatch,
-    useStore,
-    useActions
-} from 'react-redux';
 
 import ReduxModule from './redux-x.js';
 import { isObject } from './utils.js';
@@ -75,14 +65,5 @@ export {
     // from redux
     applyMiddleware,
     compose,
-    bindActionCreators,
-    // from react-redux
-    Provider,
-    connect,
-    connectAdvanced,
-    batch,
-    userSelector,
-    useDispatch,
-    useStore,
-    useActions
+    bindActionCreators
 };

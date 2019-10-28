@@ -2,7 +2,7 @@
   typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('redux')) :
   typeof define === 'function' && define.amd ? define(['exports', 'redux'], factory) :
   (global = global || self, factory(global['@yuandana/redux-x'] = {}, global.redux));
-}(this, function (exports, redux) { 'use strict';
+}(this, (function (exports, redux) { 'use strict';
 
   function _classCallCheck(instance, Constructor) {
     if (!(instance instanceof Constructor)) {
@@ -665,7 +665,7 @@
    * @return {[type]}                [description]
    */
 
-  var createReduxModuleStore = function createReduxModuleStore(module, preloadedState, enhancer) {
+  var createStore = function createStore(module, preloadedState, enhancer) {
     // 处理传入参数
     if (typeof preloadedState === 'function' && typeof enhancer === 'undefined') {
       enhancer = preloadedState;
@@ -717,8 +717,8 @@
       return redux.compose;
     }
   });
-  exports.createReduxModuleStore = createReduxModuleStore;
+  exports.createStore = createStore;
 
   Object.defineProperty(exports, '__esModule', { value: true });
 
-}));
+})));

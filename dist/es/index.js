@@ -1,4 +1,4 @@
-import { applyMiddleware, compose, createStore } from 'redux';
+import { applyMiddleware, compose, createStore as createStore$1 } from 'redux';
 export { applyMiddleware, bindActionCreators, compose } from 'redux';
 
 function _classCallCheck(instance, Constructor) {
@@ -662,7 +662,7 @@ var createActionMiddleware = function createActionMiddleware() {
  * @return {[type]}                [description]
  */
 
-var createReduxModuleStore = function createReduxModuleStore(module, preloadedState, enhancer) {
+var createStore = function createStore(module, preloadedState, enhancer) {
   // 处理传入参数
   if (typeof preloadedState === 'function' && typeof enhancer === 'undefined') {
     enhancer = preloadedState;
@@ -692,8 +692,8 @@ var createReduxModuleStore = function createReduxModuleStore(module, preloadedSt
   // createStore(reducer, [preloadedState], enhancer)
 
 
-  var store = createStore(rootReducer, preloadedState, enhancer);
+  var store = createStore$1(rootReducer, preloadedState, enhancer);
   return store;
 };
 
-export { createReduxModuleStore };
+export { createStore };
